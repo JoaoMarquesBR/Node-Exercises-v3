@@ -23,15 +23,15 @@ const TrafficLight = (props) => {
 
     const serverConnect = () => {
         try {
-            // const socket = io.connect("localhost:5000", {
-            //     forceNew: true,
-            //     transports: ["websocket"],
-            //     autoConnect: true,
-            //     reconnection: false,
-            //     connect_timeout: 5000, 
-            //     timeout: 5000,
-            // });
-            const socket = io.connect();
+            const socket = io.connect("localhost:5000", {
+                forceNew: true,
+                transports: ["websocket"],
+                autoConnect: true,
+                reconnection: false,
+                connect_timeout: 5000, 
+                timeout: 5000,
+            });
+            // const socket = io.connect();
             setSocket(socket);
 
 

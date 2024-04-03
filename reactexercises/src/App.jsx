@@ -24,6 +24,7 @@ import SocketClient from "./week10/socketclient";
 import AllRooms from "./week10/allrooms";
 import Lab15 from "./week10/lab15";
 import AllStreets from "./week11/street";
+import ClientCase from "./project2/ClientCase";
 
 // const queryClient = new QueryClient();
 // const App = () => {
@@ -47,7 +48,7 @@ const App = () => {
             <AppBar>
                 <Toolbar>
                     <Typography variant="h6" color="inherit">
-                        INFO3139 - MaterialUI
+                        INFO3139 - Socket IO
                     </Typography>
                     <IconButton
                         onClick={handleClick}
@@ -89,6 +90,9 @@ const App = () => {
                         <MenuItem component={NavLink} to="/lab17" onClick={handleClose}>
                             Lab 17
                         </MenuItem>
+                        <MenuItem component={NavLink} to="/case2" onClick={handleClose}>
+                            Case 2
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
@@ -103,6 +107,8 @@ const App = () => {
                 <Route path="/socketclient" element={<AllRooms />} />
                 <Route path="/lab15" element={<Lab15 />} />
                 <Route path="/lab17" element={<AllStreets />} />
+                <Route path="/case2" element={<ClientCase />} />
+
             </Routes>
         </ThemeProvider>
     );
