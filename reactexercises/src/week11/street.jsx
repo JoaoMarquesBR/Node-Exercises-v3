@@ -14,24 +14,30 @@ const styles = {
     },
     flexContainer: {
         display: "flex",
-        flexWrap: "wrap",
         justifyContent: "space-evenly",
         alignItems: "center",
         width: "100vw",
-        marginLeft: "3vw",
-        marginBottom: "50vh",
-        marginTop:"20vh"
+        marginTop: "2vh"
     },
+    headerContainer: {
+        marginTop:"10vh",
+        textAlign: "center",
+        width: "100%"
+    }
 };
 
 
 const AllStreets = () => {
     return(
-        
+        <div>
+        <div style={styles.headerContainer}>
+            <h1>Lab 17</h1>
+        </div>
         <div style={styles.flexContainer}>
-        <TrafficLight street="Joao" />
-        <TrafficLight street="Marques" />
-        <TrafficLight street="Info3139" />
+            <TrafficLight street="Joao" />
+            <TrafficLight street="Marques" />
+            <TrafficLight street="Info3139" />
+        </div>
     </div>
     )
 }

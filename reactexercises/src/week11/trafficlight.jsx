@@ -23,13 +23,15 @@ const TrafficLight = (props) => {
 
     const serverConnect = () => {
         try {
-            const socket = io.connect("localhost:5000", {
-                forceNew: true,
-                transports: ["websocket"],
-                autoConnect: true,
-                reconnection: false,
-                timeout: 5000,
-            });
+            // const socket = io.connect("localhost:5000", {
+            //     forceNew: true,
+            //     transports: ["websocket"],
+            //     autoConnect: true,
+            //     reconnection: false,
+            //     connect_timeout: 5000, 
+            //     timeout: 5000,
+            // });
+            const socket = io.connect();
             setSocket(socket);
 
 
@@ -37,8 +39,6 @@ const TrafficLight = (props) => {
                 console.log("connecting")
                 socket.emit("join", { name: streetName }, (err) => { });
                 setConnectionStatus("connected");
-
-
 
                 socket.emit("turnLampOn", streetName ,(callBack) => {
                     console.log(callBack)//street returned
@@ -49,7 +49,10 @@ const TrafficLight = (props) => {
             });
 
 
-
+            socket.on("connect_error", (error) => {
+                console.log("Connection attempt failed:", error.message);
+                setConnectionStatus("can't connect");
+            });
 
 
         } catch (error) {

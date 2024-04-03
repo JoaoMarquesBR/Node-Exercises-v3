@@ -16,6 +16,7 @@
     "@fastify/static": "^7.0.1",
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.15.12",
+    "express": "^4.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",

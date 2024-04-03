@@ -45,12 +45,13 @@ const Lab15 = (props) => {
 
 
     const serverConnect = () => {
+        const CONNECTION_TIMEOUT = 2000; 
         try {
             setState({
                 snackBarMsg: `Connecting to server`,
                 contactServer: true,
             });
-
+    
             const newSocket = io.connect("localhost:5000", {
                 forceNew: true,
                 transports: ["websocket"],
@@ -58,22 +59,35 @@ const Lab15 = (props) => {
                 reconnection: false,
                 timeout: 5000,
             });
-
+    
+            const timeoutId = setTimeout(() => {
+                newSocket.disconnect(); 
+                setState({ snackBarMsg: "Connection attempt timed out - try later!" });
+            }, CONNECTION_TIMEOUT);
+    
             newSocket.on("welcome", onWelcome);
             newSocket.on("newclient", newClientJoined);
-
+    
             newSocket.emit("join", { name: username, room: roomName }, (err) => { });
-
-            setSocket(newSocket);
-            setState({ msg: username + " joined" });
-
+    
+            newSocket.on('error', (error) => {
+                setState({ snackBarMsg: "Can't get connection - try later!" });
+                console.error('Socket connection error:', error);
+            });
+    
+            newSocket.on('connect', () => {
+                clearTimeout(timeoutId); 
+                setState({ msg: username + " joined" });
+            });
+    
             if (newSocket.io._readyState === "opening") {
-                setState({ snackBarMsg: "trying conneciton.." });
+                setState({ snackBarMsg: "trying connection.." });
             }
-
+    
+            setSocket(newSocket);
         } catch (err) {
             console.log(err);
-            setState({ snackBarMsg: "Can't get connection - try later!", });
+            setState({ snackBarMsg: "Can't get connection - try later!" });
             setState({ msg: "" });
         }
     };

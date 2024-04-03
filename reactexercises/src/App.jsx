@@ -86,8 +86,8 @@ const App = () => {
                         <MenuItem component={NavLink} to="/lab15" onClick={handleClose}>
                             Lab 15
                         </MenuItem>
-                        <MenuItem component={NavLink} to="/lab16" onClick={handleClose}>
-                            Lab 16
+                        <MenuItem component={NavLink} to="/lab17" onClick={handleClose}>
+                            Lab 17
                         </MenuItem>
                     </Menu>
                 </Toolbar>
@@ -102,7 +102,7 @@ const App = () => {
                 <Route path="/lab13" element={<Lab13 />} />
                 <Route path="/socketclient" element={<AllRooms />} />
                 <Route path="/lab15" element={<Lab15 />} />
-                <Route path="/lab16" element={<AllStreets />} />
+                <Route path="/lab17" element={<AllStreets />} />
             </Routes>
         </ThemeProvider>
     );
