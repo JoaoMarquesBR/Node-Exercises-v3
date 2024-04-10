@@ -10,14 +10,11 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
 import theme from "../theme";
-import { handleFirstConnect } from "../../../Node Exercises/week12/socketHandlers";
-import myMessageList from "./myMessageList";
-import UserListMessageList from "../week13/usermessagelist";
+import MyMessageList from "./myMessageList";
 
-
-import userjson from "../week13/user.json"
+// import userjson from "../week13/user.json"
+import userjson from "./messages.json";
 
 const ClientCase = (props) => {
   const initialState = {
@@ -44,6 +41,8 @@ const ClientCase = (props) => {
   const [roomName, setRoomName] = useState("");
   const [availableRooms, setAvailableRooms] = useState([]);
   const [joinedRoom, setJoinedRoom] = useState(false);
+  const [typedMessage, setTypedMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   const [socket, setSocket] = useState(null);
 
@@ -52,7 +51,6 @@ const ClientCase = (props) => {
   useEffect(() => {
     stablishFirstConnection();
     setUsers(userjson);
-
   }, []);
 
   //used to "prepare" any kind of preparation required such as room list and etc
@@ -152,6 +150,35 @@ const ClientCase = (props) => {
     }
   };
 
+  const onMessageChange = (e) => {
+    setTypedMessage(e.target.value);
+    if (socket && !isTyping) {
+      socket.emit("typing", { from: username });
+      setIsTyping(true);
+    }
+  };
+
+  const onTyping = (resp) => {
+    setTypedMessage(resp.msg);
+    setIsTyping(true);
+  };
+
+  const sendMessage = () => {
+    console.log("send message")
+
+    const newMessage = {
+      name: "John Doe",
+      age: 30,
+      email: "john.doe@example.com",
+      date: "@:10:00:00 am", // Add your desired date/time format here
+      msg: "This is a new message"
+    };
+
+    setTypedMessage("")
+    userjson.push(newMessage);
+
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Typography variant="body1" style={{ marginTop: "20px" }}>
@@ -160,8 +187,17 @@ const ClientCase = (props) => {
       {joinedRoom ? (
         <Card>
           <Typography>Hello World</Typography>
-          <UserListMessageList users={users} />
+          <MyMessageList users={users} />
 
+          <TextField
+            label="Enter message"
+            variant="outlined"
+            value={typedMessage}
+            onChange={onMessageChange}
+          />
+          <Button color="primary" variant="contained" onClick={sendMessage}>
+            Send
+          </Button>
 
         </Card>
       ) : (

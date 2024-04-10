@@ -1,13 +1,13 @@
 import { List } from "@mui/material";
-import User from "../week13/user";
-import UserMessage from "./singleMessage";
+// import UserMessage from "./singleMessage";
+import SingleUserMessage from "./singleMessage"
 
-const myMessageList = (props) => {
+const MyMessageList = (props) => {
 
  let users = props.users.map((user, idx) => {
- return <UserMessage key={idx} user={user} />;
+ return <SingleUserMessage key={idx} user={user} />;
  });
  return <List>{users}</List>;
 }
 
-export default myMessageList;
+export default MyMessageList;
