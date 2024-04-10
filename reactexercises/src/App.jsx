@@ -26,6 +26,9 @@ import Lab15 from "./week10/lab15";
 import AllStreets from "./week11/street";
 import ClientCase from "./project2/ClientCase";
 import Lab19 from "./week12/scneario123test";
+import Week13Exercise1 from "./week13/week13exercise1";
+import Week13Exercise2 from "./week13/week13exercise2";
+import Week13Exercise3 from "./week13/week13exercise3";
 
 // const queryClient = new QueryClient();
 // const App = () => {
@@ -97,7 +100,15 @@ const App = () => {
                         <MenuItem component={NavLink} to="/lab19" onClick={handleClose}>
                             Lab 19
                         </MenuItem>
-                        
+                        <MenuItem component={NavLink} to="/Week13Exercise1" onClick={handleClose}>
+                            Week 13 Exercise 1
+                        </MenuItem>
+                        <MenuItem component={NavLink} to="/Week13Exercise2" onClick={handleClose}>
+                            Week 13 Exercise 2
+                        </MenuItem>
+                        <MenuItem component={NavLink} to="/week13exercise3" onClick={handleClose}>
+                            Week 13 Exercise 3
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
@@ -114,6 +125,10 @@ const App = () => {
                 <Route path="/lab17" element={<AllStreets />} />
                 <Route path="/case2" element={<ClientCase />} />
                 <Route path="/lab19" element={<Lab19/>} />
+                <Route path="/Week13Exercise1" element={<Week13Exercise1/>} />
+                <Route path="/Week13Exercise2" element={<Week13Exercise2/>} />
+                <Route path="/Week13Exercise3" element={<Week13Exercise3/>} />
+
             </Routes>
         </ThemeProvider>
     );

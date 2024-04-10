@@ -1,0 +1,14 @@
+[
+    {"name": "Evan Lauersen", "age": 24, "email": "eva_lau@here.com"},
+    {"name": "Pedro Augusto", "age":22 , "email": "p_augusto@here.com"},
+    {"name": "Ana Maria", "age": 22, "email": "ana_maria1990@here.com"},
+    {"name": "Guilherme PEdro", "age": 20, "email": "gui_pedro@here.com"},
+    {"name": "Anitta Benco", "age": 30, "email": "anitta_ben100@here.com"},
+    {"name": "Amanda Loca", "age": 40, "email": "manda_yo@here.com"},
+    {"name": "Jose Walter", "age": 55, "email": "j_walter@here.com"},
+    {"name": "Denilza Marques", "age":55 , "email": "d_marques@here.com"},
+    {"name": "Daniel Santos", "age":35 , "email": "dani_santos@here.com"},
+    {"name": "Gabriella Loura", "age":19 , "email": "gabi_lolo@here.com"},
+    {"name": "Joao Marques", "age": 22, "email": "jmarques@here.com"}
+
+]
