@@ -79,6 +79,7 @@ const ClientCase = (props) => {
           setAvailableRooms(availableRooms);
         });
       });
+      
     } catch (err) {
       console.log(err);
     }
@@ -88,10 +89,11 @@ const ClientCase = (props) => {
     if (effectRan.current) return; // React 18 Strictmode runs useEffects twice in development`
     serverConnect();
     effectRan.current = true;
-    setJoinedRoom(true);
+    // setJoinedRoom(true);
   };
 
   const serverConnect = () => {
+    console.log("xxxxx")
     try {
       const newSocket = io.connect("localhost:5000", {
         forceNew: true,
@@ -118,6 +120,13 @@ const ClientCase = (props) => {
           console.log(message);
           setMessage(message);
         });
+       
+        newSocket.on("newMessage", (messageArrival) => {
+          console.log(messageArrival.msg); 
+          console.log("msg arrived?");
+          userjson.push(messageArrival.msg); 
+        });
+
       });
 
       newSocket.on("newUser", newClientJoined);
@@ -131,6 +140,7 @@ const ClientCase = (props) => {
     }
   };
   const userLeft = (message) => {
+    console.log("user was left?")
     console.log(message);
     setState({ type: "UPDATE_MSG", payload: message });
   };
@@ -159,6 +169,8 @@ const ClientCase = (props) => {
   };
 
   const onTyping = (resp) => {
+    socket.emit("typing", { from: username });
+
     setTypedMessage(resp.msg);
     setIsTyping(true);
   };
@@ -175,7 +187,11 @@ const ClientCase = (props) => {
     };
 
     setTypedMessage("")
-    userjson.push(newMessage);
+    // userjson.push(newMessage);
+
+
+    // socket.emit("receiveMessage", { roomName : roomName ,msg: typedMessage });
+    socket.emit("receiveMessage", { roomName : roomName ,msg: "hello world" });
 
   };
 
