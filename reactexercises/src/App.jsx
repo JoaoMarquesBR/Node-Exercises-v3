@@ -109,6 +109,9 @@ const App = () => {
                         <MenuItem component={NavLink} to="/week13exercise3" onClick={handleClose}>
                             Week 13 Exercise 3
                         </MenuItem>
+                        <MenuItem component={NavLink} to="/case2" onClick={handleClose}>
+                            Case2
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
