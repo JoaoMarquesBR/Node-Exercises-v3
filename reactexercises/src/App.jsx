@@ -25,6 +25,7 @@ import AllRooms from "./week10/allrooms";
 import Lab15 from "./week10/lab15";
 import AllStreets from "./week11/street";
 import ClientCase from "./project2/ClientCase";
+import Lab19 from "./week12/scneario123test";
 
 // const queryClient = new QueryClient();
 // const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
         setAnchorEl(event.currentTarget);
     };
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>ClientCaseLab19
             <AppBar>
                 <Toolbar>
                     <Typography variant="h6" color="inherit">
@@ -91,8 +92,12 @@ const App = () => {
                             Lab 17
                         </MenuItem>
                         <MenuItem component={NavLink} to="/case2" onClick={handleClose}>
-                            Case 2
+                            Lab 18
                         </MenuItem>
+                        <MenuItem component={NavLink} to="/lab19" onClick={handleClose}>
+                            Lab 19
+                        </MenuItem>
+                        
                     </Menu>
                 </Toolbar>
             </AppBar>
@@ -108,7 +113,7 @@ const App = () => {
                 <Route path="/lab15" element={<Lab15 />} />
                 <Route path="/lab17" element={<AllStreets />} />
                 <Route path="/case2" element={<ClientCase />} />
-
+                <Route path="/lab19" element={<Lab19/>} />
             </Routes>
         </ThemeProvider>
     );
