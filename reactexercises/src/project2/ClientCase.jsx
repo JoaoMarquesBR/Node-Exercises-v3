@@ -89,7 +89,7 @@ const ClientCase = (props) => {
     if (effectRan.current) return; // React 18 Strictmode runs useEffects twice in development`
     serverConnect();
     effectRan.current = true;
-    // setJoinedRoom(true);
+    setJoinedRoom(true);
   };
 
   const serverConnect = () => {
@@ -122,9 +122,8 @@ const ClientCase = (props) => {
         });
        
         newSocket.on("newMessage", (messageArrival) => {
-          console.log(messageArrival.msg); 
-          console.log("msg arrived?");
-          userjson.push(messageArrival.msg); 
+          console.log(messageArrival); 
+          userjson.push(messageArrival); 
         });
 
       });
@@ -178,20 +177,25 @@ const ClientCase = (props) => {
   const sendMessage = () => {
     console.log("send message")
 
-    const newMessage = {
-      name: "John Doe",
-      age: 30,
-      email: "john.doe@example.com",
-      date: "@:10:00:00 am", // Add your desired date/time format here
-      msg: "This is a new message"
-    };
-
     setTypedMessage("")
-    // userjson.push(newMessage);
 
 
-    // socket.emit("receiveMessage", { roomName : roomName ,msg: typedMessage });
-    socket.emit("receiveMessage", { roomName : roomName ,msg: "hello world" });
+    console.log("sending as "+ username)
+    socket.emit("receiveMessage", { username: username ,roomName : roomName ,msg: "hello world" });
+
+    const currentDate = new Date();
+
+  const userOwnMessage = {
+    name: "Evan Lauersen",
+    age: 24,
+    email: "eva_lau@here.com",
+    date: currentDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }),
+    msg: typedMessage,
+    color:"green"
+  };
+
+
+    userjson.push(userOwnMessage)
 
   };
 
