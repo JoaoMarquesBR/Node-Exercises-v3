@@ -14,7 +14,7 @@ const SingleUserMessage = (props) => {
         style={{ textAlign: "left", marginBottom: "2vh" }}
       >
         <MyBubble user={props.user} color="rgba(65, 117, 5, 1)" />
-        <MyTriangle color={"rgba(65, 117, 5, 1)"} />
+        <MyTriangle color={props.user.color} />
       </ListItem>
       <p></p>
     </div>

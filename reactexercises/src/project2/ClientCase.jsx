@@ -205,7 +205,6 @@ const ClientCase = (props) => {
       </Typography>
       {joinedRoom ? (
         <Card>
-          <Typography>Hello World</Typography>
           <MyMessageList users={users} />
 
           <TextField
