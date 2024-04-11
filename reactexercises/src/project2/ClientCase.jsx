@@ -181,13 +181,12 @@ const ClientCase = (props) => {
 
 
     console.log("sending as "+ username)
-    socket.emit("receiveMessage", { username: username ,roomName : roomName ,msg: "hello world" });
+    socket.emit("receiveMessage", { username: username ,roomName : roomName ,msg: typedMessage });
 
     const currentDate = new Date();
 
   const userOwnMessage = {
-    name: "Evan Lauersen",
-    age: 24,
+    name: username,
     email: "eva_lau@here.com",
     date: currentDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }),
     msg: typedMessage,
